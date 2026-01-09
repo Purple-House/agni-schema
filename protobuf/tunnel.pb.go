@@ -601,9 +601,10 @@ const file_protobuf_tunnel_proto_rawDesc = "" +
 	"\x04data\x18\x04 \x01(\v2\x12.tunnel.TunnelDataH\x00R\x04data\x12+\n" +
 	"\x05close\x18\x05 \x01(\v2\x13.tunnel.TunnelCloseH\x00R\x05close\x122\n" +
 	"\acontrol\x18\x06 \x01(\v2\x16.tunnel.ControlMessageH\x00R\acontrolB\t\n" +
-	"\amessage2B\n" +
-	"\rGatewayTunnel\x121\n" +
-	"\aConnect\x12\x10.tunnel.Envelope\x1a\x10.tunnel.Envelope(\x010\x01B8Z6Purple-House/agni-tunnels/tunnel-proto/protobuf;tunnelb\x06proto3"
+	"\amessage2?\n" +
+	"\n" +
+	"AgniTunnel\x121\n" +
+	"\aConnect\x12\x10.tunnel.Envelope\x1a\x10.tunnel.Envelope(\x010\x01B5Z3github.com/Purple-House/agni-schema/protobuf;tunnelb\x06proto3"
 
 var (
 	file_protobuf_tunnel_proto_rawDescOnce sync.Once
@@ -637,8 +638,8 @@ var file_protobuf_tunnel_proto_depIdxs = []int32{
 	4, // 4: tunnel.Envelope.data:type_name -> tunnel.TunnelData
 	5, // 5: tunnel.Envelope.close:type_name -> tunnel.TunnelClose
 	6, // 6: tunnel.Envelope.control:type_name -> tunnel.ControlMessage
-	7, // 7: tunnel.GatewayTunnel.Connect:input_type -> tunnel.Envelope
-	7, // 8: tunnel.GatewayTunnel.Connect:output_type -> tunnel.Envelope
+	7, // 7: tunnel.AgniTunnel.Connect:input_type -> tunnel.Envelope
+	7, // 8: tunnel.AgniTunnel.Connect:output_type -> tunnel.Envelope
 	8, // [8:9] is the sub-list for method output_type
 	7, // [7:8] is the sub-list for method input_type
 	7, // [7:7] is the sub-list for extension type_name

@@ -19,27 +19,27 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	GatewayTunnel_Connect_FullMethodName = "/tunnel.GatewayTunnel/Connect"
+	AgniTunnel_Connect_FullMethodName = "/tunnel.AgniTunnel/Connect"
 )
 
-// GatewayTunnelClient is the client API for GatewayTunnel service.
+// AgniTunnelClient is the client API for AgniTunnel service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type GatewayTunnelClient interface {
+type AgniTunnelClient interface {
 	Connect(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[Envelope, Envelope], error)
 }
 
-type gatewayTunnelClient struct {
+type agniTunnelClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewGatewayTunnelClient(cc grpc.ClientConnInterface) GatewayTunnelClient {
-	return &gatewayTunnelClient{cc}
+func NewAgniTunnelClient(cc grpc.ClientConnInterface) AgniTunnelClient {
+	return &agniTunnelClient{cc}
 }
 
-func (c *gatewayTunnelClient) Connect(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[Envelope, Envelope], error) {
+func (c *agniTunnelClient) Connect(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[Envelope, Envelope], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &GatewayTunnel_ServiceDesc.Streams[0], GatewayTunnel_Connect_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &AgniTunnel_ServiceDesc.Streams[0], AgniTunnel_Connect_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -48,65 +48,65 @@ func (c *gatewayTunnelClient) Connect(ctx context.Context, opts ...grpc.CallOpti
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type GatewayTunnel_ConnectClient = grpc.BidiStreamingClient[Envelope, Envelope]
+type AgniTunnel_ConnectClient = grpc.BidiStreamingClient[Envelope, Envelope]
 
-// GatewayTunnelServer is the server API for GatewayTunnel service.
-// All implementations must embed UnimplementedGatewayTunnelServer
+// AgniTunnelServer is the server API for AgniTunnel service.
+// All implementations must embed UnimplementedAgniTunnelServer
 // for forward compatibility.
-type GatewayTunnelServer interface {
+type AgniTunnelServer interface {
 	Connect(grpc.BidiStreamingServer[Envelope, Envelope]) error
-	mustEmbedUnimplementedGatewayTunnelServer()
+	mustEmbedUnimplementedAgniTunnelServer()
 }
 
-// UnimplementedGatewayTunnelServer must be embedded to have
+// UnimplementedAgniTunnelServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedGatewayTunnelServer struct{}
+type UnimplementedAgniTunnelServer struct{}
 
-func (UnimplementedGatewayTunnelServer) Connect(grpc.BidiStreamingServer[Envelope, Envelope]) error {
+func (UnimplementedAgniTunnelServer) Connect(grpc.BidiStreamingServer[Envelope, Envelope]) error {
 	return status.Error(codes.Unimplemented, "method Connect not implemented")
 }
-func (UnimplementedGatewayTunnelServer) mustEmbedUnimplementedGatewayTunnelServer() {}
-func (UnimplementedGatewayTunnelServer) testEmbeddedByValue()                       {}
+func (UnimplementedAgniTunnelServer) mustEmbedUnimplementedAgniTunnelServer() {}
+func (UnimplementedAgniTunnelServer) testEmbeddedByValue()                    {}
 
-// UnsafeGatewayTunnelServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to GatewayTunnelServer will
+// UnsafeAgniTunnelServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AgniTunnelServer will
 // result in compilation errors.
-type UnsafeGatewayTunnelServer interface {
-	mustEmbedUnimplementedGatewayTunnelServer()
+type UnsafeAgniTunnelServer interface {
+	mustEmbedUnimplementedAgniTunnelServer()
 }
 
-func RegisterGatewayTunnelServer(s grpc.ServiceRegistrar, srv GatewayTunnelServer) {
-	// If the following call panics, it indicates UnimplementedGatewayTunnelServer was
+func RegisterAgniTunnelServer(s grpc.ServiceRegistrar, srv AgniTunnelServer) {
+	// If the following call panics, it indicates UnimplementedAgniTunnelServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&GatewayTunnel_ServiceDesc, srv)
+	s.RegisterService(&AgniTunnel_ServiceDesc, srv)
 }
 
-func _GatewayTunnel_Connect_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(GatewayTunnelServer).Connect(&grpc.GenericServerStream[Envelope, Envelope]{ServerStream: stream})
+func _AgniTunnel_Connect_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(AgniTunnelServer).Connect(&grpc.GenericServerStream[Envelope, Envelope]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type GatewayTunnel_ConnectServer = grpc.BidiStreamingServer[Envelope, Envelope]
+type AgniTunnel_ConnectServer = grpc.BidiStreamingServer[Envelope, Envelope]
 
-// GatewayTunnel_ServiceDesc is the grpc.ServiceDesc for GatewayTunnel service.
+// AgniTunnel_ServiceDesc is the grpc.ServiceDesc for AgniTunnel service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var GatewayTunnel_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "tunnel.GatewayTunnel",
-	HandlerType: (*GatewayTunnelServer)(nil),
+var AgniTunnel_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "tunnel.AgniTunnel",
+	HandlerType: (*AgniTunnelServer)(nil),
 	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "Connect",
-			Handler:       _GatewayTunnel_Connect_Handler,
+			Handler:       _AgniTunnel_Connect_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
